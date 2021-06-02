@@ -1,0 +1,22 @@
+.coin {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(150px, 270px) 1fr;
+  & > * {
+    align-self: center;
+    justify-self: center;
+  }
+  &__actions {
+    display: flex;
+    width: 450px;
+    app-input {
+      width: 100%;
+    }
+    app-button {
+      transform: translateY(6px);
+    }
+    & > * {
+      margin: 0 25px;
+    }
+  }
+}

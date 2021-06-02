@@ -1,0 +1,11 @@
+table {
+  width: 500px;
+}
+.empty-table {
+  text-align: center;
+  background: #fff;
+  padding: 15px;
+  z-index: 1;
+  border: 1px solid var(--gray-low-opacity);
+  border-top: transparent;
+}

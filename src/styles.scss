@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/theming";
+@include mat-core();
+$crypto-primary: mat-palette($mat-indigo);
+$crypto-accent: mat-palette($mat-pink, A200, A100, A400);
+$crypto-warn: mat-palette($mat-red);
+$crypto-theme: mat-light-theme($crypto-primary, $crypto-accent, $crypto-warn);
+@include angular-material-theme($crypto-theme);
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Poppins", Roboto, sans-serif;
+  overflow-x: hidden;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+  background: var(--background);
+}
+
+a,
+body {
+  color: var(--black);
+  font-size: var(--m);
+}
+
+:root {
+  --background: #f9f9f9;
+  --white: #fafafa;
+  --black: #0c0c0c;
+  --blue: #2867c7;
+  --gray-1: #c4c4c4;
+  --gray-2: #f5f6f8;
+  --gray-low-opacity: rgba(181, 191, 199, 0.4);
+  --red-error: #f39a9a;
+  --xl: 24px;
+  --l: 21px;
+  --m: 18px;
+  --s: 15px;
+}

@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "crypto"
+    }
+  },
+  "defaultProject": "crypto",
+  "cli": {
+    "analytics": "0429641b-312a-4a64-b8c8-f15aea2a1092"
+  }
 }
