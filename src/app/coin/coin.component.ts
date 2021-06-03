@@ -1,29 +1,43 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { CoinService } from '../core/services/coin.service';
+import { COIN_COLUMNS } from '../core/config/coin-columns';
+import { tap } from 'rxjs/operators';
+import { SnackBarService } from '../core/services/snackbar.service';
+import { COIN_ADDED, COIN_DUPLICATE, COIN_NOT_FOUND } from '../core/config/snack-bar';
 
 @Component({
   selector: 'app-coin',
   templateUrl: './coin.component.html',
   styleUrls: ['./coin.component.scss']
 })
-export class CoinComponent implements OnInit {
+export class CoinComponent {
 
-  constructor(
-    private coinService: CoinService
-  ) { }
+  control = new FormControl('')
 
-  coins$ = this.coinService.getCoinList()
+  coins$ = this.coinService.getCoinList().pipe(
+    tap((coins) => {
+      this.isLoading ? this.isLoading = false : null
+      coins.length > 0 ? this.snackBarService.open(COIN_ADDED) : null
+      this.control.enable()
+    })
+  )
 
+  coinColumns = COIN_COLUMNS
+  isLoading = false;
 
-  @Input() control = new FormControl('')
-
-  ngOnInit(): void { }
-
-  add() {
-    this.coinService.add(this.control.value)
+  addCoin() {
+    this.isLoading = true;
+    this.control.disable()
+    try {
+      this.coinService.add(this.control.value)
+    } catch (e) {
+      this.snackBarService.open(e === 'NOT_FOUND' ? COIN_NOT_FOUND : COIN_DUPLICATE)
+      this.isLoading = false;
+      this.control.enable()
+    }
     this.control.setValue('')
-    this.coins$ = this.coinService.getCoinList()
   }
+
+  constructor(private coinService: CoinService, private snackBarService: SnackBarService) { }
 }

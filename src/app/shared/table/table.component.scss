@@ -3,9 +3,32 @@ table {
 }
 .empty-table {
   text-align: center;
-  background: #fff;
+  background: var(--white);
   padding: 15px;
   z-index: 1;
   border: 1px solid var(--gray-low-opacity);
   border-top: transparent;
+}
+
+::ng-deep {
+  .mat-table {
+    thead,
+    tbody {
+      background: var(--white);
+    }
+  }
+  .mat-table thead tr,
+  .mat-table tbody tr {
+    & > * {
+      font-size: var(--m);
+      text-align: center;
+      color: var(--black);
+    }
+    th:first-child {
+      padding-left: 10px;
+    }
+    th:last-child {
+      padding-right: 10px;
+    }
+  }
 }

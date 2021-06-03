@@ -1,29 +1,13 @@
-<ng-container *ngIf="dataSource$ | async as data">
+<table mat-table [dataSource]="dataSource$ | async" class="mat-elevation-z5">
 
-  <table mat-table [dataSource]="data" class="mat-elevation-z5">
+  <ng-container [matColumnDef]="column" *ngFor="let column of columnsView">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let element">{{element[column]}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsView"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsView;"></tr>
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="usd">
-      <th mat-header-cell *matHeaderCellDef> usd </th>
-      <td mat-cell *matCellDef="let element"> {{element.usd}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="lastHour">
-      <th mat-header-cell *matHeaderCellDef> last hour </th>
-      <td mat-cell *matCellDef="let element"> {{element.lastHour}} </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="columnsView"></tr>
-    <tr mat-row *matRowDef="let row; columns: columnsView;"></tr>
-  </table>
-  <div class="empty-table mat-elevation-z3" *ngIf="data.length === 0">Empty table, add coins</div>
-  {{data | json}}
-</ng-container>
+</table>
+<div class="empty-table mat-elevation-z3" *ngIf="(dataSource$ | async).length === 0">Empty table, add coins
+</div>

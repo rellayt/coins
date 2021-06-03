@@ -4,7 +4,6 @@ import { SharedModule } from '../shared/shared.module';
 import { CoinComponent } from './coin.component';
 import { CoinRoutingModule } from './coin-routing.module';
 
-
 @NgModule({
   declarations: [
     CoinComponent
@@ -13,8 +12,6 @@ import { CoinRoutingModule } from './coin-routing.module';
     CommonModule,
     CoinRoutingModule,
     SharedModule
-  ],
-  providers: [
   ]
 })
 export class CoinModule { }

@@ -2,5 +2,5 @@
   <mat-label>
     <ng-content></ng-content>
   </mat-label>
-  <input matInput [formControl]="control" maxlength="35">
+  <input matInput (keyup.enter)="onKeyup()" [formControl]="control" maxlength="35">
 </mat-form-field>

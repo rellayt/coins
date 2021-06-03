@@ -44,15 +44,34 @@ body {
   font-size: var(--m);
 }
 
+.mat-snack-bar-container {
+  .mat-simple-snackbar-action {
+    color: var(--white);
+  }
+  .mat-simple-snackbar,
+  .mat-simple-snackbar-action .mat-button-wrapper {
+    font-size: var(--m);
+    letter-spacing: 1px;
+  }
+}
+
+.snackBar-success {
+  background-color: var(--blue);
+  color: var(--white);
+}
+.snackBar-error {
+  background-color: var(--error);
+  color: var(--white);
+}
+
 :root {
   --background: #f9f9f9;
   --white: #fafafa;
   --black: #0c0c0c;
   --blue: #2867c7;
-  --gray-1: #c4c4c4;
-  --gray-2: #f5f6f8;
-  --gray-low-opacity: rgba(181, 191, 199, 0.4);
-  --red-error: #f39a9a;
+  --gray: #dfdfdf;
+  --error: #d83434;
+  --gray-low-opacity: #b5bfc766;
   --xl: 24px;
   --l: 21px;
   --m: 18px;

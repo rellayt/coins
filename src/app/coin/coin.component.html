@@ -1,9 +1,11 @@
 <div class="coin">
   <div class="coin__actions">
-    <app-input [control]="control">Enter crypto symbol</app-input>
-    <app-button [isDisabled]="control.value.length === 0" (onClick)="add()" [type]="'submit'">Add</app-button>
+    <app-input (onEnter)="addCoin()" [control]="control">Enter crypto symbol</app-input>
+    <app-button [isLoading]="isLoading" [isDisabled]="control.value.length === 0" (onClick)="addCoin()"
+      [type]="'submit'">
+      Add</app-button>
   </div>
   <div>
-    <app-table [dataSource$]="coins$"></app-table>
+    <app-table [columnsView]="coinColumns" [dataSource$]="coins$"></app-table>
   </div>
 </div>
