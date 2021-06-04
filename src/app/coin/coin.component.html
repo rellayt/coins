@@ -3,7 +3,11 @@
     <app-input (onEnter)="addCoin()" [control]="control">Enter crypto symbol</app-input>
     <app-button [isLoading]="isLoading" [isDisabled]="control.value.length === 0" (onClick)="addCoin()"
       [type]="'submit'">
-      Add</app-button>
+      Add
+    </app-button>
+    <app-button [isDisabled]="(coins$ | async).length === 0 || isLoading" (onClick)="resetCoinList()" [type]="'button'">
+      Clear list
+    </app-button>
   </div>
   <div>
     <app-table [columnsView]="coinColumns" [dataSource$]="coins$"></app-table>

@@ -8,7 +8,6 @@
   }
   &__actions {
     display: flex;
-    width: 450px;
     app-input {
       width: 100%;
     }
@@ -16,7 +15,7 @@
       transform: translateY(6px);
     }
     & > * {
-      margin: 0 25px;
+      margin: 0 15px;
     }
   }
 }

@@ -3,6 +3,10 @@
   background: var(--blue);
   font-size: var(--m);
   padding: 7px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
   &:disabled {
     background: var(--gray);
     color: var(--black);
