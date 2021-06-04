@@ -19,7 +19,8 @@ export class CoinService {
     if (savedCoinsId) {
       const { coinsId } = JSON.parse(savedCoinsId)
       of(coinsId).pipe(
-        mergeMap(coinsId => forkJoin(coinsId.map((id: string) => this.getCoin(id))))
+        mergeMap(coinsId => forkJoin(coinsId.map((id: string) => this.getCoin(id)))),
+        map((coins: Coin[]) => coins.sort((a, b) => a.lastHour - b.lastHour))
       ).subscribe((coins: Coin[]) => this.coinsSubject.next(coins))
     }
   }
